@@ -1,0 +1,64 @@
+//FILE: vert.cg
+
+class SampleData
+{
+	float4 Pos   : POSITION;
+	float3 UV    : TEXCOORD0;
+	float3 Field : TEXCOORD1;
+	float3 WPos  : TEXCOORD2;
+	float4 Quat  : COLOR0;
+	int2   Sign  : COLOR1;
+};
+
+uniform float4x4 WorldViewProj : state.matrix.mvp;
+//uniform floatStepLength = 0.0005;
+uniform float3 IsoValue = {1,0,0.0005};	//VALUE meaning 0: isovalue, 1: passid, 2: StepLength
+uniform float3 viewpos={1, 0, 0};
+uniform float3 viewdir={-0.707, -0.707, 0};
+
+//Compute the depth value
+// x: a world point
+// p0: viewpoint position
+// n: view direction
+float compute_isovalue(float3 x, float3 p0, float3 n)
+{
+	const float a = dot(x, n);
+	const float b = dot(p0, n);
+	return a-b;
+}
+
+// Vertex shader
+//Input: clr encodes the rotatio quaternion
+//       tex0 encodes the texture coordinate of the vertex
+SampleData main(float3 pos : POSITION, float3 tex_uvw: TEXCOORD0, float4 quat: COLOR0)
+{
+	SampleData o;
+	const float QUARTER=0.25;
+	const float SCALEISO = 0.01;
+	const float depth = compute_isovalue(pos, viewpos, viewdir);
+	float3 isovec = IsoValue;
+	float isovalue = isovec.x;
+	float steplength = isovec.z * QUARTER;		// STEP LENGTH is now a quarter
+	isovec.x*=SCALEISO;
+	
+	//========================================
+	int isosign = step(isovalue, depth);
+	isovalue += steplength;
+	if (depth>isovalue) isosign+=2;
+	isovalue += steplength;
+	if (depth>isovalue) isosign+=4;
+	isovalue += steplength;
+	if (depth>isovalue) isosign+=8;	
+
+	// Transform position 
+	o.Pos = mul(WorldViewProj, float4(pos, 1));
+	o.UV = tex_uvw;
+	o.WPos = pos;
+	o.Quat = quat;
+
+	//Note that the field var stores the isovalue, the passid, and the depth info.
+	o.Field = float3(isovec.xy, depth);
+	o.Sign.x = isosign;
+	return o;
+}
+

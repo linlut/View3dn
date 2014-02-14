@@ -1,0 +1,154 @@
+//FILE: isosurf2.cg
+
+uniform uchar4 edge_table[30] = {
+	{0, 0, 0, 0},
+	{3, 0, 3, 1},
+	{2, 1, 2, 0},
+	{2, 0, 3, 0},
+	{1, 2, 1, 3},
+	{1, 0, 1, 2},
+	{1, 0, 2, 0},
+	{3, 0, 1, 0},
+	{0, 2, 0, 1},
+	{0, 1, 3, 1},
+	{0, 1, 0, 3},
+	{3, 1, 2, 1},
+	{0, 2, 1, 2},
+	{1, 2, 3, 2},
+	{0, 3, 2, 3},
+
+	{0, 0, 0, 1},
+	{3, 2, 0, 0},
+	{2, 3, 0, 0},
+	{2, 1, 3, 1},
+	{1, 0, 0, 0},
+	{3, 0, 3, 2},
+	{1, 3, 2, 3},
+	{2, 0, 0, 0},
+	{0, 3, 0, 0},
+	{0, 2, 3, 2},
+	{2, 1, 2, 3},
+	{0, 1, 0, 0},
+	{0, 3, 1, 3},
+	{0, 2, 0, 0},
+	{1, 3, 0, 0}
+};
+
+class SampleData
+{
+	float4 Pos   : POSITION;
+	float3 UV    : TEXCOORD0;
+	float3 Field : TEXCOORD1;
+};
+
+uniform float3x3 WorldViewIT : state.matrix.modelview.invtrans;
+uniform float4x4 WorldViewProj : state.matrix.mvp;
+
+uniform float IsoValue = 1;
+uniform float PassID = -123.4567;
+uniform float StepLength = 0.0005;
+uniform float3 viewpos={1, 0, 0};
+uniform float3 viewdir={-0.707, -0.707, 0};
+
+
+//Compute the depth value
+// x: a world point
+// p0: viewpoint position
+// n: view direction
+float compute_isovalue(float3 x, float3 p0, float3 n)
+{
+	float a = dot(x, n);
+	float b = dot(p0, n);
+	return a-b;
+}
+
+// Vertex shader
+//Input: clr encodes the rotatio quaternion
+//       tex0 encodes the texture coordinate of the vertex
+SampleData vertexShaderMain(float3 pos : POSITION, float4 clr: COLOR0, float3 tex0: TEXCOORD0)
+{
+	SampleData o;
+	// Transform position 
+	o.Pos = mul(WorldViewProj, float4(pos, 1));
+	o.UV = tex0;
+	o.Field.x = PassID;
+	o.Field.y = compute_isovalue(pos, viewpos, viewdir);
+	o.Field.z = IsoValue*0.01;
+	return o;
+}
+
+// Estimate where isosurface intersects grid edge with endpoints v0, v1
+void CalcIntersection(float isovalue,
+					  float4 pos0,  //Position
+					  float3 uv0,	//3D Texture coordinate
+					  float3 field0,//Field value 
+					  float4 pos1,
+					  float3 uv1,
+					  float3 field1)
+{
+	const float t = (isovalue - field0.y) / (field1.y - field0.y);
+	float4 pos = lerp(pos0, pos1, t);
+	float3 uv = float3(t,t,t); // = lerp(uv0, uv1, t);
+	emitVertex(pos:POSITION, uv:TEXCOORD0);
+}
+
+void marchingTetrahedra(
+	const float isovalue,
+	AttribArray<float4> Pos,	//Viewpoint position
+	AttribArray<float3> UV,
+	AttribArray<float3> Field)
+{
+	// construct index for this tetrahedron
+	const unsigned int I0 = (Field[0].y > isovalue) ? 8 : 0;
+	const unsigned int I1 = (Field[1].y > isovalue) ? 4 : 0;
+	const unsigned int I2 = (Field[2].y > isovalue) ? 2 : 0;
+	const unsigned int I3 = (Field[3].y > isovalue) ? 1 : 0;
+	const int index = (I0) | (I1) | (I2) | I3;
+	if (index && (index < 15)){
+		int4 e0 = texRECTfetch(edgeTex, int4(index, 0, 0, 0)) * 255;
+		int4 e1 = texRECTfetch(edgeTex, int4(index, 1, 0, 0)) * 255;
+		// Emit a triangle
+		CalcIntersection(isovalue, 
+						Pos[e0.x], UV[e0.x], Field[e0.x], 
+						Pos[e0.y], UV[e0.y], Field[e0.y]);
+		CalcIntersection(isovalue, 
+						Pos[e0.z], UV[e0.z], Field[e0.z], 
+						Pos[e0.w], UV[e0.w], Field[e0.w]);
+		CalcIntersection(isovalue, 
+						Pos[e1.x], UV[e1.x], Field[e1.x], 
+						Pos[e1.y], UV[e1.y], Field[e1.y]);
+		// Emit additional triangle, if necessary
+		if (e1.z) 
+		CalcIntersection(isovalue, 
+						Pos[e1.z], UV[e1.z], Field[e1.z], 
+						Pos[e1.w], UV[e1.w], Field[e1.w]);
+		EndPrimitive();
+	}
+}
+
+// Geometry shader
+// input: line with adjacency (tetrahedron)
+// outputs: zero, one or two triangles depending if isosurface intersects tetrahedron
+LINE_ADJ
+TRIANGLE_OUT
+void geometryShaderMain(
+	AttribArray<float4> Pos : POSITION,
+	AttribArray<float3> UV : TEXCOORD0,
+	AttribArray<float3> Field : TEXCOORD1
+	)
+{
+	float passid = Field[0].x;
+	float isovalue = Field[0].z*100;
+	//if (passid==PassID){
+	marchingTetrahedra(isovalue, Pos, UV, Field);
+	/*
+		isovalue+=StepLength*0.5;
+		marchingTetrahedra(isovalue, Pos, UV, Field);
+		isovalue+=StepLength*0.5;
+		marchingTetrahedra(isovalue, Pos, UV, Field);
+		isovalue+=StepLength*0.5;
+		marchingTetrahedra(isovalue, Pos, UV, Field);
+	//}
+
+	*/
+}

@@ -1,0 +1,343 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>MirrorObjectDialog</class>
+<author>Nan Zhang</author>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>MirrorObjectDialog</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>414</width>
+            <height>290</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Mirror dialog</string>
+    </property>
+    <property name="sizeGripEnabled">
+        <bool>true</bool>
+    </property>
+    <widget class="QButtonGroup">
+        <property name="name">
+            <cstring>buttonGroup1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>91</y>
+                <width>390</width>
+                <height>140</height>
+            </rect>
+        </property>
+        <property name="title">
+            <string>Mirror settings</string>
+        </property>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout3</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>200</x>
+                    <y>20</y>
+                    <width>160</width>
+                    <height>110</height>
+                </rect>
+            </property>
+            <vbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pushButtonM1</cstring>
+                    </property>
+                    <property name="text">
+                        <string>M1 Rendering options</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pushButtonM2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>M2 Rendering options</string>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pushButtonM3</cstring>
+                    </property>
+                    <property name="text">
+                        <string>M3 Rendering options</string>
+                    </property>
+                </widget>
+            </vbox>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout2</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>20</y>
+                    <width>170</width>
+                    <height>110</height>
+                </rect>
+            </property>
+            <vbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>checkBoxM1</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Mirror 1: rotate 90 degree</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>checkBoxM2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Mirror 2: rotate 180 degree</string>
+                    </property>
+                </widget>
+                <widget class="QCheckBox">
+                    <property name="name">
+                        <cstring>checkBoxM3</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Mirror 3: rotate 270 degree</string>
+                    </property>
+                </widget>
+            </vbox>
+        </widget>
+    </widget>
+    <widget class="QGroupBox">
+        <property name="name">
+            <cstring>groupBox1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>10</y>
+                <width>391</width>
+                <height>60</height>
+            </rect>
+        </property>
+        <property name="title">
+            <string>Rotation axis</string>
+        </property>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel2</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>8</x>
+                    <y>20</y>
+                    <width>19</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>P0</string>
+            </property>
+        </widget>
+        <widget class="QLabel">
+            <property name="name">
+                <cstring>textLabel2_2</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>197</x>
+                    <y>20</y>
+                    <width>18</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>P1</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEditP0</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>33</x>
+                    <y>20</y>
+                    <width>150</width>
+                    <height>30</height>
+                </rect>
+            </property>
+        </widget>
+        <widget class="QLineEdit">
+            <property name="name">
+                <cstring>lineEditP1</cstring>
+            </property>
+            <property name="geometry">
+                <rect>
+                    <x>220</x>
+                    <y>20</y>
+                    <width>160</width>
+                    <height>30</height>
+                </rect>
+            </property>
+            <property name="frameShape">
+                <enum>LineEditPanel</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Sunken</enum>
+            </property>
+        </widget>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>buttonHelp</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>21</x>
+                <y>243</y>
+                <width>80</width>
+                <height>26</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;Help</string>
+        </property>
+        <property name="accel">
+            <string>F1</string>
+        </property>
+        <property name="autoDefault">
+            <bool>true</bool>
+        </property>
+    </widget>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>buttonOk</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>249</x>
+                <y>243</y>
+                <width>110</width>
+                <height>26</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>&amp;OK</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+        <property name="autoDefault">
+            <bool>true</bool>
+        </property>
+        <property name="default">
+            <bool>true</bool>
+        </property>
+    </widget>
+</widget>
+<connections>
+    <connection>
+        <sender>checkBoxM1</sender>
+        <signal>clicked()</signal>
+        <receiver>MirrorObjectDialog</receiver>
+        <slot>handleCheckBoxM1()</slot>
+    </connection>
+    <connection>
+        <sender>checkBoxM2</sender>
+        <signal>clicked()</signal>
+        <receiver>MirrorObjectDialog</receiver>
+        <slot>handleCheckBoxM2()</slot>
+    </connection>
+    <connection>
+        <sender>checkBoxM3</sender>
+        <signal>clicked()</signal>
+        <receiver>MirrorObjectDialog</receiver>
+        <slot>handleCheckBoxM3()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonM1</sender>
+        <signal>clicked()</signal>
+        <receiver>MirrorObjectDialog</receiver>
+        <slot>handlePushButtonM1()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonM2</sender>
+        <signal>clicked()</signal>
+        <receiver>MirrorObjectDialog</receiver>
+        <slot>handlePushButtonM2()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonM3</sender>
+        <signal>clicked()</signal>
+        <receiver>MirrorObjectDialog</receiver>
+        <slot>handlePushButtonM3()</slot>
+    </connection>
+    <connection>
+        <sender>buttonOk</sender>
+        <signal>clicked()</signal>
+        <receiver>MirrorObjectDialog</receiver>
+        <slot>handleButtonOK()</slot>
+    </connection>
+    <connection>
+        <sender>lineEditP0</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>MirrorObjectDialog</receiver>
+        <slot>onLineEditP0()</slot>
+    </connection>
+    <connection>
+        <sender>lineEditP1</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>MirrorObjectDialog</receiver>
+        <slot>onLineEditP1()</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>lineEditP0</tabstop>
+    <tabstop>lineEditP1</tabstop>
+    <tabstop>checkBoxM1</tabstop>
+    <tabstop>pushButtonM1</tabstop>
+    <tabstop>checkBoxM2</tabstop>
+    <tabstop>pushButtonM2</tabstop>
+    <tabstop>checkBoxM3</tabstop>
+    <tabstop>pushButtonM3</tabstop>
+    <tabstop>buttonOk</tabstop>
+    <tabstop>buttonHelp</tabstop>
+</tabstops>
+<includes>
+    <include location="global" impldecl="in declaration">drawparms.h</include>
+    <include location="local" impldecl="in implementation">mirrordialog.ui.h</include>
+</includes>
+<variables>
+    <variable access="public">CGLDrawParms * _pDrawParms;</variable>
+    <variable access="public">CGLDrawParms ** _ppDrawParmsM3;</variable>
+</variables>
+<signals>
+    <signal>applyButtonPressed()</signal>
+</signals>
+<slots>
+    <slot>handleCheckBoxM1()</slot>
+    <slot>handleCheckBoxM2()</slot>
+    <slot>handleCheckBoxM3()</slot>
+    <slot>handlePushButtonM1()</slot>
+    <slot>handlePushButtonM2()</slot>
+    <slot>handlePushButtonM3()</slot>
+    <slot>init()</slot>
+    <slot>handleButtonOK()</slot>
+    <slot>handleButtonCancel()</slot>
+    <slot>onLineEditP0()</slot>
+    <slot>onLineEditP1()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

@@ -1,0 +1,143 @@
+//FILE: isosurf.cg
+
+uniform float StepLength = 0.0005;
+int2 edge_table[15] ={	// short4 edge_table[30] = {
+	{0x00000000,	0x01000000},			//{0, 0, 0, 0},
+	{0x01030003,	0x00000203},			//{3, 0, 3, 1},
+	{0x00020102,	0x00000302},			//{2, 1, 2, 0},
+	{0x00030002,	0x01030102},			//{2, 0, 3, 0},
+	{0x03010201,	0x00000001},			//{1, 2, 1, 3},
+	{0x02010001,	0x02030003},			//{1, 0, 1, 2},
+	{0x00020001,	0x03020301},			//{1, 0, 2, 0},
+	{0x00010003,	0x00000002},			//{3, 0, 1, 0},
+	{0x01000200,	0x00000300},			//{0, 2, 0, 1},
+	{0x01030100,	0x02030200},			//{0, 1, 3, 1},
+	{0x03000100,	0x03020102},			//{0, 1, 0, 3},
+	{0x01020103,	0x00000100},			//{3, 1, 2, 1},
+	{0x02010200,	0x03010300},			//{0, 2, 1, 2},
+	{0x02030201,	0x00000200},			//{1, 2, 3, 2},
+	{0x03020300,	0x00000301}			//{0, 3, 2, 3},
+};
+
+// Estimate where isosurface intersects grid edge with endpoints v0, v1
+void CalcIntersection(half isovalue,
+					  half bufferID,
+					  //----------------------------
+					  half4 pos0,  //Position
+					  half  uv0,   //3D Texture coordinate
+					  half3 field0,
+					  //----------------------------
+					  half4 pos1,
+					  half  uv1, 
+					  half3 field1
+	)
+{
+	const half t = (isovalue - field0.z)/(field1.z - field0.z);
+	half4 pos = lerp(pos0, pos1, t);
+	half uv = lerp(uv0, uv1, t);
+	emitVertex(pos:POSITION, uv:TEXCOORD0);
+}
+
+inline int4 BreakIntValue(const int i)
+{
+	int4 r;
+	int K=0xF;
+	r.x = i& K;
+	r.y = (i>>8)&K;
+	r.z = (i>>16)&K;
+	r.w = (i>>24)&K;
+	return r;
+}
+
+void marchingTetrahedra(
+	const half isovalue,
+	const int bufferID,
+	const short _index,
+	samplerRECT edgeTex,
+	AttribArray<half4> Pos,	//Viewpoint position
+	AttribArray<half>  UV,
+	AttribArray<half3> Field
+	)
+{
+	short index=_index&0xF;
+	if (index && (index < 15)){
+		int4 e0 = texRECTfetch(edgeTex, int4(index, 0, 0, 0)) * 255;
+		int4 e1 = texRECTfetch(edgeTex, int4(index, 1, 0, 0)) * 255;
+		// Emit a triangle
+		CalcIntersection(isovalue, bufferID,
+						 Pos[e0.x], UV[e0.x], Field[e0.x], 
+						 Pos[e0.y], UV[e0.y], Field[e0.y]);
+		CalcIntersection(isovalue, bufferID,
+						 Pos[e0.z], UV[e0.z], Field[e0.z],
+						 Pos[e0.w], UV[e0.w], Field[e0.w]);
+		CalcIntersection(isovalue, bufferID,
+						 Pos[e1.x], UV[e1.x], Field[e1.x],
+						 Pos[e1.y], UV[e1.y], Field[e1.y]);
+		// Emit additional triangle, if necessary
+		if (e1.z)
+		CalcIntersection(isovalue, bufferID,
+						 Pos[e1.z], UV[e1.z], Field[e1.z],
+						 Pos[e1.w], UV[e1.w], Field[e1.w]);
+		//EndPrimitive();
+		restartStrip();
+	}
+}
+
+
+// Geometry shader
+// input: line with adjacency (tetrahedron)
+// outputs: zero, one or two triangles depending if isosurface intersects tetrahedron
+LINE_ADJ
+TRIANGLE_OUT
+void main(
+	AttribArray<half4> Pos : POSITION,
+	AttribArray<half> UV : TEXCOORD0,
+	AttribArray<half3> Field : TEXCOORD1,
+	AttribArray<int> Sign: COLOR1,
+	uniform samplerRECT edgeTex : TEXUNIT0
+	)
+{
+	short I0, I1, I2, I3, R, index;
+	half isovalue = Field[0].x* (half)100.0; 
+//	half passid = Field[0].y;
+//	if (passid==0){
+		half steplen = StepLength*0.250;
+	//===============Slice 0=============================================
+		R=1;
+		I0 = (Sign[0].x&R)<<3;
+		I1 = (Sign[1].x&R)<<2;
+		I2 = (Sign[2].x&R)<<1;
+		I3 = (Sign[3].x&R);
+		index = I0 | I1 | I2 | I3;
+		marchingTetrahedra(isovalue, 0, index, edgeTex, Pos, UV, Field);
+		return;
+	//===============Slice 1=============================================
+		isovalue+=steplen;
+		R<<=1;
+		I0 = (Sign[0].x&R)<<2;
+		I1 = (Sign[1].x&R)<<1;
+		I2 = (Sign[2].x&R);
+		I3 = (Sign[3].x&R)>>1;
+		index = I0 | I1 | I2 | I3;
+		marchingTetrahedra(isovalue, 1, index, edgeTex, Pos, UV, Field);
+		//return;
+	//===============Slice 2=============================================
+		isovalue+=steplen;
+		R<<=1;
+		I0 = (Sign[0].x&R)<<1;
+		I1 = (Sign[1].x&R);
+		I2 = (Sign[2].x&R)>>1;
+		I3 = (Sign[3].x&R)>>2;
+		index = I0 | I1 | I2 | I3;
+		marchingTetrahedra(isovalue, 2, index, edgeTex, Pos, UV, Field);
+	//===============Slice 3=============================================
+		isovalue+=steplen;
+		R<<=1;
+		I0 = (Sign[0].x&R);
+		I1 = (Sign[1].x&R)>>1;
+		I2 = (Sign[2].x&R)>>2;
+		I3 = (Sign[3].x&R)>>3;
+		index = I0 | I1 | I2 | I3;
+		marchingTetrahedra(isovalue, 3, index, edgeTex, Pos, UV, Field);
+//	}
+}

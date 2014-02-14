@@ -1,0 +1,172 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>CXmlIODialog</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>CXmlIODialog</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>618</width>
+            <height>426</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>XML Input/Output</string>
+    </property>
+    <property name="sizeGripEnabled">
+        <bool>true</bool>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>6</number>
+        </property>
+        <property name="spacing">
+            <number>6</number>
+        </property>
+        <widget class="QLayoutWidget" row="0" column="1">
+            <property name="name">
+                <cstring>layout3</cstring>
+            </property>
+            <vbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>m_buttonLoadXML</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Load XML</string>
+                    </property>
+                    <property name="accel">
+                        <string></string>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>m_buttonSaveXML</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Save XML</string>
+                    </property>
+                    <property name="accel">
+                        <string></string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>spacer3</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Vertical</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>20</width>
+                            <height>121</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>m_buttonOk</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;OK</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+O</string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>true</bool>
+                    </property>
+                    <property name="default">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>m_buttonCancel</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Cancel</string>
+                    </property>
+                    <property name="accel">
+                        <string></string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+            </vbox>
+        </widget>
+        <widget class="QListView" row="0" column="0">
+            <property name="name">
+                <cstring>m_xmlListView</cstring>
+            </property>
+            <property name="frameShape">
+                <enum>LineEditPanel</enum>
+            </property>
+        </widget>
+    </grid>
+</widget>
+<connections>
+    <connection>
+        <sender>m_buttonOk</sender>
+        <signal>clicked()</signal>
+        <receiver>CXmlIODialog</receiver>
+        <slot>accept()</slot>
+    </connection>
+    <connection>
+        <sender>m_buttonCancel</sender>
+        <signal>clicked()</signal>
+        <receiver>CXmlIODialog</receiver>
+        <slot>reject()</slot>
+    </connection>
+    <connection>
+        <sender>m_buttonSaveXML</sender>
+        <signal>clicked()</signal>
+        <receiver>CXmlIODialog</receiver>
+        <slot>buttonSaveXMLClicked()</slot>
+    </connection>
+    <connection>
+        <sender>m_buttonLoadXML</sender>
+        <signal>clicked()</signal>
+        <receiver>CXmlIODialog</receiver>
+        <slot>buttonLoadXMLClicked()</slot>
+    </connection>
+    <connection>
+        <sender>m_xmlListView</sender>
+        <signal>doubleClicked(QListViewItem*,const QPoint&amp;,int)</signal>
+        <receiver>CXmlIODialog</receiver>
+        <slot>slotListViewDoubleClick(QListViewItem*,const QPoint&amp;,int)</slot>
+    </connection>
+</connections>
+<includes>
+    <include location="global" impldecl="in declaration">qdom.h</include>
+</includes>
+<variables>
+    <variable access="public">QDomDocument *m_pDomTree;</variable>
+</variables>
+<slots>
+    <slot>buttonLoadXMLClicked( void )</slot>
+    <slot>buttonSaveXMLClicked( void )</slot>
+    <slot>slotListViewDoubleClick( QListViewItem * pitem, const QPoint &amp; pt, int xx )</slot>
+    <slot>slotSetOptionFromMenu( int id )</slot>
+</slots>
+<functions>
+    <function access="private" specifier="non virtual" returnType="QDomNode *">_searchItemNodeByName( const QDomNode &amp; anode, const QString &amp; id )</function>
+</functions>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

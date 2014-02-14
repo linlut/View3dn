@@ -1,0 +1,20 @@
+//==============================================================
+
+
+// Pixel shader main entry
+void main(		  
+		half uv : TEXCOORD0,
+		uniform sampler1D transferFunc,
+		out half4 ocolor0: COLOR0
+		) 
+{
+	half intensity = uv;
+	half4 rgba = tex1D(transferFunc, intensity);
+	//half4 rgba;
+	//rgba.x = intensity;
+	//rgba.y = rgba.z = 0;
+	//rgba.w = 1;
+	ocolor0 = rgba;
+}
+
+//==============================================================

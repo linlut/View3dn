@@ -1,0 +1,79 @@
+//==============================================================
+#include "quaternion.cg"
+
+const half3 h5 = half3(0.5,0.5,0.5);
+#define Ia  1
+#define Ka  0.04
+const half IaKa = 0.2;
+#define Kd  2.0
+const half Ks = 8.50;
+const half SHINNESS = 220;
+
+half3 cgLighting4(const half3 N, const half3 lightpos, const half3 viewpos, const half3 objpos, const half3 matcolor)
+{
+	//compute vectors
+	/*
+	const fixed3 L = normalize(lightpos - objpos);
+	const fixed3 V = normalize(viewpos - objpos);
+	const fixed3 H = normalize(L+V);
+	const fixed NL = dot(N, L);
+	const fixed NH = dot(N, H);
+	*/
+	const half3 L = normalize(lightpos - objpos);
+	const half3 V = L;
+	const half3 H = L;
+	const half NL = dot(N, L);
+	const half NH = NL;
+
+	//use the phong lighting model for the total intensity
+	half4 cof = lit(NL, NH, SHINNESS);
+	const half TOTAL=(cof.y*Kd + cof.z*Ks + IaKa);
+	return TOTAL*matcolor;
+}
+
+uniform float3 viewpos = float3(1,0,0);
+uniform float3 lightpos = float3(1,0,0);
+
+// Pixel shader main entry
+void main(		  
+		half4 quat : COLOR0, 
+		half3 uv : TEXCOORD0,
+		half3 objpos : TEXCOORD1, 
+		half2 tex2 : TEXCOORD2, 
+		uniform sampler3D densityVolume,
+		uniform sampler3D gradientVolume,
+		uniform sampler1D transferFunc,
+		out float4 ocolor0: COLOR0,
+		out float4 ocolor1: COLOR1,
+		out float4 ocolor2: COLOR2,
+		out float4 ocolor3: COLOR3
+		) 
+{
+	const half4 halfvec = half4(0.5,0.5,0.5,0.5);
+	int bufferID = (int)tex2.x;	//transfer buffer ID
+	//half passid = tex2.y;	    //also transfer passid;
+    //if (passid==0){
+		const half intensity = tex3D(densityVolume, uv).x;
+		const half4 g4 = tex3D(gradientVolume, uv);
+		const half4 newquat = (quat-halfvec)*2;
+		const half3 N = (g4.xyz - halfvec.xyz)*2;
+		const half4 rgba = tex1D(transferFunc, intensity);
+		//lighting computation
+		half4 cc;
+		cc.w = rgba.w*g4.w;			//gradient magtitude modulation
+		const half3 NN = (QuaternionRotate(newquat, N));  //Omit the normalization
+		cc.xyz = cgLighting4(NN, lightpos, viewpos, objpos.xyz, rgba.xyz);
+		ocolor0 = cc;
+		return;
+		if (bufferID==0)
+			ocolor0=cc;
+		else if (bufferID==1)
+			ocolor1=cc;
+		else if (bufferID==2)
+			ocolor2=cc;
+		else
+			ocolor3=cc;		
+//	}
+}
+
+//==============================================================

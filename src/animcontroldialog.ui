@@ -1,0 +1,365 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>CAnimControlDialog</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>CAnimControlDialog</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>3</y>
+            <width>540</width>
+            <height>240</height>
+        </rect>
+    </property>
+    <property name="minimumSize">
+        <size>
+            <width>540</width>
+            <height>240</height>
+        </size>
+    </property>
+    <property name="maximumSize">
+        <size>
+            <width>540</width>
+            <height>240</height>
+        </size>
+    </property>
+    <property name="baseSize">
+        <size>
+            <width>0</width>
+            <height>0</height>
+        </size>
+    </property>
+    <property name="caption">
+        <string>Generate Animation</string>
+    </property>
+    <property name="sizeGripEnabled">
+        <bool>true</bool>
+    </property>
+    <grid>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>2</number>
+        </property>
+        <property name="spacing">
+            <number>12</number>
+        </property>
+        <property name="resizeMode">
+            <enum>Minimum</enum>
+        </property>
+        <widget class="QLayoutWidget" row="2" column="0">
+            <property name="name">
+                <cstring>Layout1</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>8</number>
+                </property>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>buttonHelp</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Help</string>
+                    </property>
+                    <property name="accel">
+                        <string>F1</string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>Horizontal Spacing2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>buttonOk</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;OK</string>
+                    </property>
+                    <property name="accel">
+                        <string></string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>true</bool>
+                    </property>
+                    <property name="default">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>buttonCancel</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Cancel</string>
+                    </property>
+                    <property name="accel">
+                        <string></string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QGroupBox" row="1" column="0">
+            <property name="name">
+                <cstring>groupBox2</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>5</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="title">
+                <string>Output image files</string>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>12</number>
+                </property>
+                <property name="spacing">
+                    <number>8</number>
+                </property>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>lineEditOutFileName</cstring>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>pushButtonOutputFileName</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Browse</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QGroupBox" row="0" column="0">
+            <property name="name">
+                <cstring>groupBox1</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>7</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="minimumSize">
+                <size>
+                    <width>400</width>
+                    <height>0</height>
+                </size>
+            </property>
+            <property name="title">
+                <string>Input data file</string>
+            </property>
+            <grid>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>12</number>
+                </property>
+                <property name="spacing">
+                    <number>8</number>
+                </property>
+                <widget class="QPushButton" row="0" column="2">
+                    <property name="name">
+                        <cstring>pushButtonStartFileName</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Browse</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="0" column="0">
+                    <property name="name">
+                        <cstring>textLabel2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Starting File</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit" row="0" column="1">
+                    <property name="name">
+                        <cstring>lineEditStartFileName</cstring>
+                    </property>
+                </widget>
+                <widget class="QPushButton" row="1" column="2">
+                    <property name="name">
+                        <cstring>pushButtonEndFileName</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Browse</string>
+                    </property>
+                </widget>
+                <widget class="QLabel" row="1" column="0">
+                    <property name="name">
+                        <cstring>textLabel2_2</cstring>
+                    </property>
+                    <property name="text">
+                        <string>Ending File</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit" row="1" column="1">
+                    <property name="name">
+                        <cstring>lineEditEndFileName</cstring>
+                    </property>
+                </widget>
+                <widget class="QLayoutWidget" row="2" column="0" rowspan="1" colspan="3">
+                    <property name="name">
+                        <cstring>layout47</cstring>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>textLabel3</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Increment Step</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>lineEditInc</cstring>
+                            </property>
+                        </widget>
+                        <spacer>
+                            <property name="name">
+                                <cstring>spacer35</cstring>
+                            </property>
+                            <property name="orientation">
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property name="sizeType">
+                                <enum>Expanding</enum>
+                            </property>
+                            <property name="sizeHint">
+                                <size>
+                                    <width>340</width>
+                                    <height>21</height>
+                                </size>
+                            </property>
+                        </spacer>
+                    </hbox>
+                </widget>
+            </grid>
+        </widget>
+    </grid>
+</widget>
+<connections>
+    <connection>
+        <sender>buttonOk</sender>
+        <signal>clicked()</signal>
+        <receiver>CAnimControlDialog</receiver>
+        <slot>onButtonOK()</slot>
+    </connection>
+    <connection>
+        <sender>buttonCancel</sender>
+        <signal>clicked()</signal>
+        <receiver>CAnimControlDialog</receiver>
+        <slot>onButtonCancel()</slot>
+    </connection>
+    <connection>
+        <sender>lineEditEndFileName</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>CAnimControlDialog</receiver>
+        <slot>onLineEditEndFileName()</slot>
+    </connection>
+    <connection>
+        <sender>lineEditInc</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>CAnimControlDialog</receiver>
+        <slot>onLineEditInc()</slot>
+    </connection>
+    <connection>
+        <sender>lineEditOutFileName</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>CAnimControlDialog</receiver>
+        <slot>onLineEditOutputFileName()</slot>
+    </connection>
+    <connection>
+        <sender>lineEditStartFileName</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>CAnimControlDialog</receiver>
+        <slot>onLineEditStartFileName()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonEndFileName</sender>
+        <signal>clicked()</signal>
+        <receiver>CAnimControlDialog</receiver>
+        <slot>onPushButtonEndFileName()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonOutputFileName</sender>
+        <signal>clicked()</signal>
+        <receiver>CAnimControlDialog</receiver>
+        <slot>onPushButtonOutputFileName()</slot>
+    </connection>
+    <connection>
+        <sender>pushButtonStartFileName</sender>
+        <signal>clicked()</signal>
+        <receiver>CAnimControlDialog</receiver>
+        <slot>onPushButtonStartFileName()</slot>
+    </connection>
+</connections>
+<variables>
+    <variable access="public">char *m_pOutputFileName;</variable>
+    <variable access="public">int * m_pIncreaseCounter;</variable>
+    <variable access="public">char* m_pEndFileName;</variable>
+    <variable access="public">char* m_pStartFileName;</variable>
+    <variable access="public">char m_strStartFileName[256];</variable>
+    <variable access="public">char m_strEndFileName[256];</variable>
+    <variable access="public">char m_strOutputFileName[256];</variable>
+    <variable access="public">int m_nInc;</variable>
+</variables>
+<slots>
+    <slot>onButtonOK()</slot>
+    <slot>onButtonCancel()</slot>
+    <slot>onLineEditOutputFileName()</slot>
+    <slot>onLineEditInc()</slot>
+    <slot>onLineEditEndFileName()</slot>
+    <slot>onLineEditStartFileName()</slot>
+    <slot>onPushButtonStartFileName()</slot>
+    <slot>onPushButtonEndFileName()</slot>
+    <slot>onPushButtonOutputFileName()</slot>
+</slots>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

@@ -1,0 +1,172 @@
+//file: quaternion.cg
+
+half4 invertQuat(const half4 quat)
+{
+	return half4(-quat.x, -quat.y, -quat.z, quat.w);
+}
+
+struct dualRotMatrix
+{
+	half3x3 m1;
+	half3x3 m2;
+};
+
+
+dualRotMatrix getDualQuatMatrix(const half4 q)
+{
+  	dualRotMatrix s;
+
+	const half TWO = 2.0f;
+   	const half q00 = TWO * q.x * q.x;
+   	const half q11 = TWO * q.y * q.y;
+   	const half q22 = TWO * q.z * q.z;
+   	
+   	const half q01 = TWO * q.x * q.y;
+   	const half q02 = TWO * q.x * q.z;
+   	const half q03 = TWO * q.x * q.w;
+   	
+   	const half q12 = TWO * q.y * q.z;
+   	const half q13 = TWO * q.y * q.w;
+   	const half q23 = TWO * q.z * q.w;
+
+  	s.m1[0][0] = s.m2[0][0] = 1.0 - q11 - q22;	
+  	s.m1[0][1] = q01 - q23;	 
+	s.m2[0][1] = q01 + q23;
+  	s.m1[0][2] = q02 + q13;  
+	s.m2[0][2] = q02 - q13;
+
+  	s.m1[1][0] = q01 + q23;  
+	s.m2[1][0] = q01 - q23;
+  	s.m1[1][1] = s.m2[1][1] = 1.0 - q22 - q00;  
+  	s.m1[1][2] = q12 - q03;  
+	s.m2[1][2]=  q12 + q03;
+
+  	s.m1[2][0] = q02 - q13;  
+	s.m2[2][0] = q02 + q13;
+  	s.m1[2][1] = q12 + q03;  
+	s.m2[2][1] = q12 - q03;
+  	s.m1[2][2] = s.m2[2][2] = 1.0 - q11 - q00; 
+
+  	return s;
+}
+
+
+half3x3 Quaternion2Matrix(half4 q)
+{
+	/*
+	const half q00 = 2.0 * q[0] * q[0];
+	const half q11 = 2.0 * q[1] * q[1];
+	const half q22 = 2.0 * q[2] * q[2];
+
+	const half q01 = 2.0 * q[0] * q[1];
+	const half q02 = 2.0 * q[0] * q[2];
+	const half q03 = 2.0 * q[0] * q[3];
+
+	const half q12 = 2.0 * q[1] * q[2];
+	const half q13 = 2.0 * q[1] * q[3];
+	const half q23 = 2.0 * q[2] * q[3];
+	*/
+	const half3 X0 = 2.0 * (q.xyz * q.xyz);
+	const half q00 = X0.x;
+	const half q11 = X0.y;
+	const half q22 = X0.z;
+
+	const half3 X1 = 2.0 * (q.xxx * q.yzw);
+	const half q01 = X1.x;
+	const half q02 = X1.y;
+	const half q03 = X1.z;
+
+	const half3 X2 = 2.0 * (q.yyz * q.zww);
+	const half q12 = X2.x;
+	const half q13 = X2.y;
+	const half q23 = X2.z;
+	
+	half3x3 m;
+/*
+	m[0][0] = (1.0 - q11 - q22);
+	m[0][1] = (q01 - q23);
+	m[0][2] = (q02 + q13);
+
+	m[1][0] = (q01 + q23);
+	m[1][1] = (1.0 - q22 - q00);
+	m[1][2] = (q12 - q03);
+
+	m[2][0] = (q02 - q13);
+	m[2][1] = (q12 + q03);
+	m[2][2] = (1.0 - q11 - q00);
+*/
+	const half3 X3 = X0.yzy + X0.zxx;
+	m[0][0] = (1.0 - X3.x);
+	m[0][1] = (q01 - q23);
+	m[0][2] = (q02 + q13);
+
+	m[1][0] = (q01 + q23);
+	m[1][1] = (1.0 - X3.y);
+	m[1][2] = (q12 - q03);
+
+	m[2][0] = (q02 - q13);
+	m[2][1] = (q12 + q03);
+	m[2][2] = (1.0 - X3.z);
+
+	return m;
+}
+
+half3x3 Quaternion2Matrix2(half4 q)
+{
+	const half q00 = 2.0 * q[0] * q[0];
+	const half q11 = 2.0 * q[1] * q[1];
+	const half q22 = 2.0 * q[2] * q[2];
+	const half q01 = 2.0 * q[0] * q[1];
+	const half q02 = 2.0 * q[0] * q[2];
+	const half q03 = 2.0 * q[0] * q[3];
+	const half q12 = 2.0 * q[1] * q[2];
+	const half q13 = 2.0 * q[1] * q[3];
+	const half q23 = 2.0 * q[2] * q[3];
+
+	half3x3 m;
+	m[0][0] = (1.0 - q11 - q22);
+	m[1][0] = (q01 - q23);
+	m[2][0] = (q02 + q13);
+	m[0][1] = (q01 + q23);
+	m[1][1] = (1.0 - q22 - q00);
+	m[2][1] = (q12 - q03);
+	m[0][2] = (q02 - q13);
+	m[1][2] = (q12 + q03);
+	m[2][2] = (1.0 - q11 - q00);
+	return m;
+}
+
+
+half3x3 getQuatMatrix(const half4 q)
+{
+	half3x3 m = Quaternion2Matrix(q);
+	return m;
+}
+
+
+half3 QuaternionRotate(half4 q, half3 v)
+{
+	half3x3 m = Quaternion2Matrix(q);
+	return mul(m, v);
+}
+
+half3 QuaternionRotate2(half4 q, half3 v)
+{
+	half3x3 m = Quaternion2Matrix(q);
+	return mul(v, m);
+}
+
+half3 QuaternionRotate(half4 q, half3 v, half3 dg0, half3 dg1, half3 dg2)
+{
+	half3x3 m = Quaternion2Matrix(q);
+	m[0][0] += dg0[0];
+	m[0][1] += dg0[1];
+	m[0][2] += dg0[2];
+	m[1][0] += dg1[0];
+	m[1][1] += dg1[1];
+	m[1][2] += dg1[2];
+	m[2][0] += dg2[0];
+	m[2][1] += dg2[1];
+	m[2][2] += dg2[2];
+	return mul(m, v);
+}

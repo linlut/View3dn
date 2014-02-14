@@ -1,0 +1,18 @@
+Log for qt3to4 on Tue Jan 21 11:30:26 2014. Number of log entries: 15
+In file D:/Users/nanzhang/project/View3dn/src/xmlpropertylist.h at line 11 column 143: qlistview.h -> q3listview.h
+In file D:/Users/nanzhang/project/View3dn/src/xmlpropertylist.h at line 11 column 166: qptrlist.h -> q3ptrlist.h
+In file D:/Users/nanzhang/project/View3dn/src/xmlpropertylist.h at line 11 column 192: qguardedptr.h -> qpointer.h
+In file D:/Users/nanzhang/project/View3dn/src/xmlpropertylist.h at line 11 column 263: qptrlist.h -> q3ptrlist.h
+In file D:/Users/nanzhang/project/View3dn/src/xmlpropertylist.h at line 11 column 566: QHBox -> Q3HBox
+In file D:/Users/nanzhang/project/View3dn/src/xmlpropertylist.h at line 11 column 613: QFrame -> Q3Frame
+In file D:/Users/nanzhang/project/View3dn/src/xmlpropertylist.h at line 11 column 717: QDateEdit -> Q3DateEdit
+In file D:/Users/nanzhang/project/View3dn/src/xmlpropertylist.h at line 11 column 735: QTimeEdit -> Q3TimeEdit
+In file D:/Users/nanzhang/project/View3dn/src/xmlpropertylist.h at line 11 column 757: QDateTimeEdit -> Q3DateTimeEdit
+In file D:/Users/nanzhang/project/View3dn/src/xmlpropertylist.h at line 11 column 973: QListViewItem -> Q3ListViewItem
+In file D:/Users/nanzhang/project/View3dn/src/xmlpropertylist.h at line 11 column 1607: QListViewItem -> Q3ListViewItem
+In file D:/Users/nanzhang/project/View3dn/src/xmlpropertylist.h at line 11 column 1673: QListViewItem -> Q3ListViewItem
+In file D:/Users/nanzhang/project/View3dn/src/xmlpropertylist.h at line 11 column 1846: QCString -> Q3CString
+In file D:/Users/nanzhang/project/View3dn/src/xmlpropertylist.h at line 11 column 2161: QListViewItem -> Q3ListViewItem
+In file D:/Users/nanzhang/project/View3dn/src/xmlpropertylist.h: Added the following include directives:
+	#include <QResizeEvent> 	#include <Q3CString> 	#include <QEvent> 	#include <QDragEnterEvent> 	#include <QDropEvent> 	#include <QLabel> 	#include <Q3Frame> 	#include <QDragMoveEvent> 	#include <QCloseEvent> 
+

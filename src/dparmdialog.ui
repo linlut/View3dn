@@ -1,0 +1,1203 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>DGDrawParms</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>DGDrawParms</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>406</width>
+            <height>456</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Rendering Options</string>
+    </property>
+    <property name="sizeGripEnabled">
+        <bool>true</bool>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QTabWidget">
+            <property name="name">
+                <cstring>tabWidget</cstring>
+            </property>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>Widget8</cstring>
+                </property>
+                <attribute name="title">
+                    <string>Mesh</string>
+                </attribute>
+                <widget class="QButtonGroup">
+                    <property name="name">
+                        <cstring>buttonGroup1</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>11</y>
+                            <width>128</width>
+                            <height>184</height>
+                        </rect>
+                    </property>
+                    <property name="title">
+                        <string>Mesh rendering</string>
+                    </property>
+                    <widget class="QRadioButton">
+                        <property name="name">
+                            <cstring>radioButtonLine</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>11</x>
+                                <y>27</y>
+                                <width>60</width>
+                                <height>19</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Line</string>
+                        </property>
+                    </widget>
+                    <widget class="QRadioButton">
+                        <property name="name">
+                            <cstring>radioButtonHiddenline</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>11</x>
+                                <y>52</y>
+                                <width>70</width>
+                                <height>19</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Hiddenline</string>
+                        </property>
+                    </widget>
+                    <widget class="QRadioButton">
+                        <property name="name">
+                            <cstring>radioButtonFillpoly</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>11</x>
+                                <y>77</y>
+                                <width>60</width>
+                                <height>19</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Fill</string>
+                        </property>
+                    </widget>
+                    <widget class="QRadioButton">
+                        <property name="name">
+                            <cstring>radioButtonDrawNothing</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>11</x>
+                                <y>102</y>
+                                <width>60</width>
+                                <height>19</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>None</string>
+                        </property>
+                    </widget>
+                    <widget class="QLabel">
+                        <property name="name">
+                            <cstring>textLabel1_3_2</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>10</x>
+                                <y>130</y>
+                                <width>50</width>
+                                <height>20</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Color</string>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit">
+                        <property name="name">
+                            <cstring>lineEditFaceColor</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>8</x>
+                                <y>150</y>
+                                <width>100</width>
+                                <height>20</height>
+                            </rect>
+                        </property>
+                        <property name="frameShape">
+                            <enum>LineEditPanel</enum>
+                        </property>
+                        <property name="frameShadow">
+                            <enum>Sunken</enum>
+                        </property>
+                    </widget>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>lineEditBackgroundColor</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>117</x>
+                            <y>332</y>
+                            <width>146</width>
+                            <height>22</height>
+                        </rect>
+                    </property>
+                </widget>
+                <widget class="QGroupBox">
+                    <property name="name">
+                        <cstring>groupBox4</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>117</x>
+                            <y>201</y>
+                            <width>146</width>
+                            <height>76</height>
+                        </rect>
+                    </property>
+                    <property name="title">
+                        <string>Other attributes</string>
+                    </property>
+                    <widget class="QLayoutWidget">
+                        <property name="name">
+                            <cstring>layout12</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>10</x>
+                                <y>20</y>
+                                <width>110</width>
+                                <height>50</height>
+                            </rect>
+                        </property>
+                        <vbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <widget class="QCheckBox">
+                                <property name="name">
+                                    <cstring>checkBoxShowAxis</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Show axis</string>
+                                </property>
+                            </widget>
+                            <widget class="QCheckBox">
+                                <property name="name">
+                                    <cstring>checkBoxShowCamera</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Show camera</string>
+                                </property>
+                            </widget>
+                        </vbox>
+                    </widget>
+                </widget>
+                <widget class="QGroupBox">
+                    <property name="name">
+                        <cstring>groupBox9</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>145</x>
+                            <y>11</y>
+                            <width>118</width>
+                            <height>184</height>
+                        </rect>
+                    </property>
+                    <property name="title">
+                        <string>Line style</string>
+                    </property>
+                    <widget class="QLabel">
+                        <property name="name">
+                            <cstring>textLabel1_2_2</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>12</x>
+                                <y>75</y>
+                                <width>48</width>
+                                <height>31</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Width</string>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit">
+                        <property name="name">
+                            <cstring>lineEditLineWidth</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>48</x>
+                                <y>80</y>
+                                <width>60</width>
+                                <height>20</height>
+                            </rect>
+                        </property>
+                    </widget>
+                    <widget class="QLabel">
+                        <property name="name">
+                            <cstring>textLabel1_5</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>14</x>
+                                <y>24</y>
+                                <width>30</width>
+                                <height>20</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Color</string>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit">
+                        <property name="name">
+                            <cstring>lineEditLineColor</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>10</x>
+                                <y>44</y>
+                                <width>100</width>
+                                <height>20</height>
+                            </rect>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox">
+                        <property name="name">
+                            <cstring>checkBox50</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>8</x>
+                                <y>136</y>
+                                <width>71</width>
+                                <height>31</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Texturing</string>
+                        </property>
+                    </widget>
+                </widget>
+                <widget class="QButtonGroup">
+                    <property name="name">
+                        <cstring>buttonGroup1_2</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>269</x>
+                            <y>11</y>
+                            <width>100</width>
+                            <height>350</height>
+                        </rect>
+                    </property>
+                    <property name="title">
+                        <string>Vertex style</string>
+                    </property>
+                    <widget class="QRadioButton">
+                        <property name="name">
+                            <cstring>radioButtonVertTetra</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>11</x>
+                                <y>102</y>
+                                <width>70</width>
+                                <height>19</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Tetra</string>
+                        </property>
+                    </widget>
+                    <widget class="QRadioButton">
+                        <property name="name">
+                            <cstring>radioButtonVertNone</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>11</x>
+                                <y>132</y>
+                                <width>60</width>
+                                <height>19</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>None</string>
+                        </property>
+                    </widget>
+                    <widget class="QRadioButton">
+                        <property name="name">
+                            <cstring>radioButtonVertPoint</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>11</x>
+                                <y>27</y>
+                                <width>60</width>
+                                <height>19</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Point</string>
+                        </property>
+                    </widget>
+                    <widget class="QRadioButton">
+                        <property name="name">
+                            <cstring>radioButtonVertSphere</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>11</x>
+                                <y>52</y>
+                                <width>70</width>
+                                <height>19</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Sphere</string>
+                        </property>
+                    </widget>
+                    <widget class="QRadioButton">
+                        <property name="name">
+                            <cstring>radioButtonVertCube</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>11</x>
+                                <y>77</y>
+                                <width>60</width>
+                                <height>19</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Cube</string>
+                        </property>
+                    </widget>
+                    <widget class="QLabel">
+                        <property name="name">
+                            <cstring>textLabel1</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>8</x>
+                                <y>246</y>
+                                <width>30</width>
+                                <height>21</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Scale</string>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit">
+                        <property name="name">
+                            <cstring>lineEditVertScale</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>38</x>
+                                <y>246</y>
+                                <width>50</width>
+                                <height>20</height>
+                            </rect>
+                        </property>
+                    </widget>
+                    <widget class="QLineEdit">
+                        <property name="name">
+                            <cstring>lineEditVertexColor</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>8</x>
+                                <y>306</y>
+                                <width>81</width>
+                                <height>21</height>
+                            </rect>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox">
+                        <property name="name">
+                            <cstring>checkBoxVertexTexture</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>9</x>
+                                <y>202</y>
+                                <width>77</width>
+                                <height>19</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Texturing</string>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox">
+                        <property name="name">
+                            <cstring>checkBoxVertexDir</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>9</x>
+                                <y>177</y>
+                                <width>77</width>
+                                <height>19</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Random dir</string>
+                        </property>
+                    </widget>
+                    <widget class="QLabel">
+                        <property name="name">
+                            <cstring>textLabel2_2</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>8</x>
+                                <y>286</y>
+                                <width>50</width>
+                                <height>16</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Color</string>
+                        </property>
+                    </widget>
+                </widget>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>textLabel1_4</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>117</x>
+                            <y>283</y>
+                            <width>146</width>
+                            <height>36</height>
+                        </rect>
+                    </property>
+                    <property name="text">
+                        <string>Background color</string>
+                    </property>
+                </widget>
+                <widget class="QGroupBox">
+                    <property name="name">
+                        <cstring>groupBox3</cstring>
+                    </property>
+                    <property name="geometry">
+                        <rect>
+                            <x>11</x>
+                            <y>201</y>
+                            <width>100</width>
+                            <height>170</height>
+                        </rect>
+                    </property>
+                    <property name="title">
+                        <string>OpenGL</string>
+                    </property>
+                    <widget class="QCheckBox">
+                        <property name="name">
+                            <cstring>checkBoxTexturing</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>11</x>
+                                <y>96</y>
+                                <width>70</width>
+                                <height>19</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Texturing</string>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox">
+                        <property name="name">
+                            <cstring>checkBoxLighting</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>11</x>
+                                <y>18</y>
+                                <width>70</width>
+                                <height>19</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Lighting</string>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox">
+                        <property name="name">
+                            <cstring>checkBoxDepthtest</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>11</x>
+                                <y>44</y>
+                                <width>70</width>
+                                <height>19</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Depth test</string>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox">
+                        <property name="name">
+                            <cstring>checkBoxSmoothing</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>10</x>
+                                <y>70</y>
+                                <width>70</width>
+                                <height>19</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Smoothing</string>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox">
+                        <property name="name">
+                            <cstring>checkBoxVBO</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>10</x>
+                                <y>120</y>
+                                <width>70</width>
+                                <height>19</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Use VBO</string>
+                        </property>
+                    </widget>
+                    <widget class="QCheckBox">
+                        <property name="name">
+                            <cstring>checkBoxDispList</cstring>
+                        </property>
+                        <property name="geometry">
+                            <rect>
+                                <x>10</x>
+                                <y>148</y>
+                                <width>83</width>
+                                <height>20</height>
+                            </rect>
+                        </property>
+                        <property name="text">
+                            <string>Use DispList</string>
+                        </property>
+                    </widget>
+                </widget>
+            </widget>
+            <widget class="QWidget">
+                <property name="name">
+                    <cstring>Widget9</cstring>
+                </property>
+                <attribute name="title">
+                    <string>Texture</string>
+                </attribute>
+                <grid>
+                    <property name="name">
+                        <cstring>unnamed</cstring>
+                    </property>
+                    <widget class="QGroupBox" row="1" column="0">
+                        <property name="name">
+                            <cstring>groupBox3_2</cstring>
+                        </property>
+                        <property name="title">
+                            <string>Component for mapping</string>
+                        </property>
+                        <widget class="QComboBox">
+                            <property name="name">
+                                <cstring>comboBoxChooseComp</cstring>
+                            </property>
+                            <property name="geometry">
+                                <rect>
+                                    <x>10</x>
+                                    <y>30</y>
+                                    <width>110</width>
+                                    <height>20</height>
+                                </rect>
+                            </property>
+                        </widget>
+                    </widget>
+                    <widget class="QGroupBox" row="1" column="1" rowspan="2" colspan="1">
+                        <property name="name">
+                            <cstring>groupBox4_2</cstring>
+                        </property>
+                        <property name="title">
+                            <string>Legend</string>
+                        </property>
+                        <grid>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <property name="margin">
+                                <number>8</number>
+                            </property>
+                            <property name="spacing">
+                                <number>12</number>
+                            </property>
+                            <widget class="QLabel" row="2" column="0" rowspan="1" colspan="2">
+                                <property name="name">
+                                    <cstring>textLabel2</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Level number</string>
+                                </property>
+                            </widget>
+                            <widget class="QLineEdit" row="2" column="2" rowspan="1" colspan="2">
+                                <property name="name">
+                                    <cstring>lineEditLegendLevel</cstring>
+                                </property>
+                                <property name="frameShape">
+                                    <enum>LineEditPanel</enum>
+                                </property>
+                                <property name="frameShadow">
+                                    <enum>Sunken</enum>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="3" column="0">
+                                <property name="name">
+                                    <cstring>textLabel3</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Text color</string>
+                                </property>
+                            </widget>
+                            <widget class="QLineEdit" row="3" column="1" rowspan="1" colspan="3">
+                                <property name="name">
+                                    <cstring>lineEditLegendTextColor</cstring>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="5" column="0" rowspan="1" colspan="3">
+                                <property name="name">
+                                    <cstring>textLabel4_2</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Orientation</string>
+                                </property>
+                            </widget>
+                            <widget class="QLabel" row="4" column="0" rowspan="1" colspan="2">
+                                <property name="name">
+                                    <cstring>textLabel4</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Position</string>
+                                </property>
+                            </widget>
+                            <widget class="QComboBox" row="4" column="2" rowspan="1" colspan="2">
+                                <property name="name">
+                                    <cstring>comboBoxLegendPosition</cstring>
+                                </property>
+                            </widget>
+                            <widget class="QComboBox" row="5" column="3">
+                                <property name="name">
+                                    <cstring>comboBoxLegendOrientation</cstring>
+                                </property>
+                            </widget>
+                            <widget class="QRadioButton" row="0" column="0" rowspan="1" colspan="4">
+                                <property name="name">
+                                    <cstring>radioButtonShowLegend</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Show legend</string>
+                                </property>
+                            </widget>
+                            <widget class="QRadioButton" row="1" column="0" rowspan="1" colspan="4">
+                                <property name="name">
+                                    <cstring>radioButtonShowVertexValue</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Show vertex attribute value</string>
+                                </property>
+                            </widget>
+                        </grid>
+                    </widget>
+                    <widget class="QButtonGroup" row="2" column="0">
+                        <property name="name">
+                            <cstring>buttonGroup5</cstring>
+                        </property>
+                        <property name="title">
+                            <string>Map Style</string>
+                        </property>
+                        <vbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <property name="margin">
+                                <number>6</number>
+                            </property>
+                            <property name="spacing">
+                                <number>12</number>
+                            </property>
+                            <widget class="QRadioButton">
+                                <property name="name">
+                                    <cstring>radioButtonLinearMapping</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Linear mapping</string>
+                                </property>
+                            </widget>
+                            <widget class="QRadioButton">
+                                <property name="name">
+                                    <cstring>radioButtonLog2Mapping</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Sqrt mapping</string>
+                                </property>
+                            </widget>
+                            <widget class="QRadioButton">
+                                <property name="name">
+                                    <cstring>radioButtonLog10Mapping</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Log2 mapping</string>
+                                </property>
+                            </widget>
+                        </vbox>
+                    </widget>
+                    <widget class="QLayoutWidget" row="0" column="0" rowspan="1" colspan="2">
+                        <property name="name">
+                            <cstring>layout10</cstring>
+                        </property>
+                        <hbox>
+                            <property name="name">
+                                <cstring>unnamed</cstring>
+                            </property>
+                            <property name="margin">
+                                <number>6</number>
+                            </property>
+                            <property name="spacing">
+                                <number>6</number>
+                            </property>
+                            <widget class="QCheckBox">
+                                <property name="name">
+                                    <cstring>checkBoxTexturing2</cstring>
+                                </property>
+                                <property name="text">
+                                    <string>Enable 1D texture</string>
+                                </property>
+                            </widget>
+                            <widget class="QPushButton">
+                                <property name="name">
+                                    <cstring>buttonLoadTexture</cstring>
+                                </property>
+                                <property name="enabled">
+                                    <bool>false</bool>
+                                </property>
+                                <property name="text">
+                                    <string>Load 1D texture</string>
+                                </property>
+                            </widget>
+                        </hbox>
+                    </widget>
+                </grid>
+            </widget>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>Layout1</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <property name="margin">
+                    <number>0</number>
+                </property>
+                <property name="spacing">
+                    <number>6</number>
+                </property>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>buttonApply</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Apply</string>
+                    </property>
+                    <property name="accel">
+                        <string>Alt+A</string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <spacer>
+                    <property name="name">
+                        <cstring>Horizontal Spacing2</cstring>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="sizeType">
+                        <enum>Expanding</enum>
+                    </property>
+                    <property name="sizeHint">
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>buttonOk</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;OK</string>
+                    </property>
+                    <property name="accel">
+                        <string></string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>true</bool>
+                    </property>
+                    <property name="default">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+                <widget class="QPushButton">
+                    <property name="name">
+                        <cstring>buttonCancel</cstring>
+                    </property>
+                    <property name="text">
+                        <string>&amp;Cancel</string>
+                    </property>
+                    <property name="accel">
+                        <string></string>
+                    </property>
+                    <property name="autoDefault">
+                        <bool>true</bool>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+    </vbox>
+</widget>
+<connections>
+    <connection>
+        <sender>buttonApply</sender>
+        <signal>clicked()</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onButtonApply()</slot>
+    </connection>
+    <connection>
+        <sender>buttonCancel</sender>
+        <signal>clicked()</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onButtonCancel()</slot>
+    </connection>
+    <connection>
+        <sender>buttonLoadTexture</sender>
+        <signal>clicked()</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onButtonLoadTexture()</slot>
+    </connection>
+    <connection>
+        <sender>buttonOk</sender>
+        <signal>clicked()</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onButtonOK()</slot>
+    </connection>
+    <connection>
+        <sender>checkBoxDepthtest</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onCheckBoxDepthtest()</slot>
+    </connection>
+    <connection>
+        <sender>checkBoxLighting</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onCheckBoxLighting()</slot>
+    </connection>
+    <connection>
+        <sender>checkBoxVBO</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onCheckBoxVBO()</slot>
+    </connection>
+    <connection>
+        <sender>checkBoxDispList</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onCheckBoxDispList()</slot>
+    </connection>
+    <connection>
+        <sender>checkBoxShowAxis</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onCheckBoxShowAxis()</slot>
+    </connection>
+    <connection>
+        <sender>checkBoxShowCamera</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onCheckBoxShowCamera()</slot>
+    </connection>
+    <connection>
+        <sender>checkBoxSmoothing</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onCheckBoxSmoothing()</slot>
+    </connection>
+    <connection>
+        <sender>checkBoxTexturing</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onCheckBoxTexturing()</slot>
+    </connection>
+    <connection>
+        <sender>checkBoxTexturing2</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onCheckBox1DTexture()</slot>
+    </connection>
+    <connection>
+        <sender>comboBoxChooseComp</sender>
+        <signal>activated(int)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onComboBoxChooseComp()</slot>
+    </connection>
+    <connection>
+        <sender>comboBoxChooseComp</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onComboBoxChooseComp()</slot>
+    </connection>
+    <connection>
+        <sender>comboBoxLegendOrientation</sender>
+        <signal>activated(int)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onComboBoxLegendOrientation()</slot>
+    </connection>
+    <connection>
+        <sender>comboBoxLegendPosition</sender>
+        <signal>activated(int)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onComboBoxLegendPosition()</slot>
+    </connection>
+    <connection>
+        <sender>lineEditBackgroundColor</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onLineEditBgColor()</slot>
+    </connection>
+    <connection>
+        <sender>lineEditLegendLevel</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onLineEditLegendLevel()</slot>
+    </connection>
+    <connection>
+        <sender>lineEditLegendTextColor</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onLineEditLegendTextColor()</slot>
+    </connection>
+    <connection>
+        <sender>lineEditVertScale</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onLineEditVertScale()</slot>
+    </connection>
+    <connection>
+        <sender>radioButtonDrawNothing</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onRadioButtonDrawNothing()</slot>
+    </connection>
+    <connection>
+        <sender>radioButtonFillpoly</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onRadioButtonFill()</slot>
+    </connection>
+    <connection>
+        <sender>radioButtonHiddenline</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onRadioButtonHiddenline()</slot>
+    </connection>
+    <connection>
+        <sender>radioButtonLine</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onRadioButtonLine()</slot>
+    </connection>
+    <connection>
+        <sender>radioButtonLinearMapping</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onRadioButtonLinearMapping()</slot>
+    </connection>
+    <connection>
+        <sender>radioButtonLog10Mapping</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onRadioButtonLog10Mapping()</slot>
+    </connection>
+    <connection>
+        <sender>radioButtonLog2Mapping</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onRadioButtonLog2Mapping()</slot>
+    </connection>
+    <connection>
+        <sender>radioButtonShowLegend</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onRadioButtonShowLegend()</slot>
+    </connection>
+    <connection>
+        <sender>radioButtonShowVertexValue</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onRadioButtonShowVertexValue()</slot>
+    </connection>
+    <connection>
+        <sender>radioButtonVertCube</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onRadioButtonVertCube()</slot>
+    </connection>
+    <connection>
+        <sender>radioButtonVertNone</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onRadioButtonVertNone()</slot>
+    </connection>
+    <connection>
+        <sender>radioButtonVertPoint</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onRadioButtonVertPoint()</slot>
+    </connection>
+    <connection>
+        <sender>radioButtonVertSphere</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onRadioButtonVertSphere()</slot>
+    </connection>
+    <connection>
+        <sender>radioButtonVertTetra</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onRadioButtonVertTetra()</slot>
+    </connection>
+    <connection>
+        <sender>lineEditLineColor</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onLineEditLineColor()</slot>
+    </connection>
+    <connection>
+        <sender>lineEditLineWidth</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onLineEditLineWidth()</slot>
+    </connection>
+    <connection>
+        <sender>lineEditFaceColor</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>DGDrawParms</receiver>
+        <slot>onLineEditFaceColor()</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>tabWidget</tabstop>
+    <tabstop>radioButtonLine</tabstop>
+    <tabstop>radioButtonHiddenline</tabstop>
+    <tabstop>radioButtonFillpoly</tabstop>
+    <tabstop>checkBoxLighting</tabstop>
+    <tabstop>checkBoxDepthtest</tabstop>
+    <tabstop>checkBoxSmoothing</tabstop>
+    <tabstop>checkBoxTexturing</tabstop>
+    <tabstop>checkBoxVBO</tabstop>
+    <tabstop>checkBoxShowAxis</tabstop>
+    <tabstop>checkBoxShowCamera</tabstop>
+    <tabstop>lineEditBackgroundColor</tabstop>
+    <tabstop>buttonApply</tabstop>
+    <tabstop>buttonOk</tabstop>
+    <tabstop>buttonCancel</tabstop>
+    <tabstop>checkBoxTexturing2</tabstop>
+    <tabstop>buttonLoadTexture</tabstop>
+</tabstops>
+<includes>
+    <include location="local" impldecl="in declaration">drawparms.h</include>
+</includes>
+<variables>
+    <variable access="public">CGLDrawParms m_DrawParms;</variable>
+    <variable access="public">CGLDrawParms *m_pDrawParms;</variable>
+</variables>
+<slots>
+    <slot>onRadioButtonLine()</slot>
+    <slot>onRadioButtonHiddenline()</slot>
+    <slot>onRadioButtonFill()</slot>
+    <slot>onRadioButtonPoint()</slot>
+    <slot>onCheckBoxLighting()</slot>
+    <slot>onCheckBoxDepthtest()</slot>
+    <slot>onCheckBoxSmoothing()</slot>
+    <slot>onCheckBoxTexturing()</slot>
+    <slot>onCheckBoxVBO()</slot>
+    <slot>onCheckBoxDispList()</slot>
+    <slot>onLineEditLineColor()</slot>
+    <slot>onLineEditLineWidth()</slot>
+    <slot>onLineEditFaceColor()</slot>
+    <slot>onLineEditBgColor()</slot>
+    <slot>onCheckBoxShowAxis()</slot>
+    <slot>onCheckBoxShowCamera()</slot>
+    <slot>onCheckBox1DTexture()</slot>
+    <slot>onButtonLoadTexture()</slot>
+    <slot>onButtonApply()</slot>
+    <slot>onButtonOK()</slot>
+    <slot>onButtonCancel()</slot>
+    <slot>onRadioButtonLinearMapping()</slot>
+    <slot>onRadioButtonLog2Mapping()</slot>
+    <slot>onRadioButtonLog10Mapping()</slot>
+    <slot>onComboBoxChooseComp()</slot>
+    <slot>onLineEditLegendLevel()</slot>
+    <slot>onRadioButtonShowLegend()</slot>
+    <slot>onLineEditLegendTextColor()</slot>
+    <slot>onComboBoxLegendPosition()</slot>
+    <slot>onComboBoxLegendOrientation()</slot>
+    <slot>onRadioButtonDrawNothing()</slot>
+    <slot>onRadioButtonShowVertexValue()</slot>
+    <slot>onRadioButtonVertPoint()</slot>
+    <slot>onRadioButtonVertSphere()</slot>
+    <slot>onRadioButtonVertCube()</slot>
+    <slot>onRadioButtonVertTetra()</slot>
+    <slot>onRadioButtonVertNone()</slot>
+    <slot>onLineEditVertScale()</slot>
+</slots>
+<pixmapinproject/>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

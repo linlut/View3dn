@@ -1,0 +1,52 @@
+//==============================================================
+#include "quaternion.cg"
+
+const float3 h5 = float3(0.5,0.5,0.5);
+#define Ia  1
+#define Ka  0.05
+const float IaKa = Ia * Ka;
+#define Kd  0.600
+const float Ks =1.0 - Kd;
+const float SHINNESS = 200;
+
+float3 cgLighting4(const float3 N, const float3 lightpos, const float3 viewpos, const float3 objpos, const float3 matcolor)
+{
+	//compute vectors
+	/*
+	const float3 L = normalize(lightpos - objpos);
+	const float3 V = normalize(viewpos - objpos);
+	const float3 H = normalize(L+V);
+	const float NL = dot(N, L);
+	const float NH = dot(N, H);
+	*/
+	const float3 L = normalize(lightpos - objpos);
+	const float3 V = L;
+	const float3 H = L;
+	const float NL = dot(N, L);
+	const float NH = NL;
+
+	//use the phong lighting model for the total intensity
+	float4 cof = lit(NL, NH, SHINNESS);
+	cof *= 4.00;
+	return (cof.y*Kd + cof.z*Ks + IaKa)*matcolor;
+}
+
+uniform float3 viewpos = float3(1,0,0);
+uniform float3 lightpos = float3(1,0,0);
+
+// Pixel shader main entry
+void main(		  
+		float3 uv : TEXCOORD0,
+//		float3 objpos : TEXCOORD1, 
+		uniform sampler3D densityVolume,
+		uniform sampler3D gradientVolume,
+		uniform sampler1D transferFunc,
+		out float4 ocolor: COLOR
+		) 
+{
+	float intensity = 0.16;
+	const float4 rgba = tex1D(transferFunc, intensity);
+	ocolor = rgba;
+}
+
+//==============================================================
