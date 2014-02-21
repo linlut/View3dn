@@ -215,7 +215,8 @@ void CPointObj::DrawPickingObject(const int objid)
 
 	glEnable(GL_DEPTH_TEST);      
 	glDisable(GL_LIGHTING);
-	glDisable(GL_TEXTURE);
+	glDisable(GL_TEXTURE_1D);
+	glDisable(GL_TEXTURE_2D);
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 	glMatrixMode(GL_MODELVIEW);

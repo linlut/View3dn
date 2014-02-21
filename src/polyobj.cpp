@@ -588,7 +588,7 @@ void DrawModel(GLuint vboId, GLuint eboId, int nv, int nelm, int vert_per_elm)
 
 void CPolyObj:: _DrawShadedSurfaces(void)
 {
-    CHECK_GL_ERRORS;
+    //CHECK_GL_ERRORS;
 	glEnable(GL_DEPTH_TEST);      
     glDisable(GL_TEXTURE_2D);
     glDisable(GL_TEXTURE_1D);
@@ -648,7 +648,7 @@ void CPolyObj:: _DrawShadedSurfaces(void)
                     DrawModel(m_vboID, m_eboID, m_nVertexCount, m_nPolygonCount, m_nPlyVertexCount);
                     */
                     if (0 == m_meshRender.vbo()){
-                        CHECK_GL_ERRORS;
+                        //CHECK_GL_ERRORS;
                         m_meshRender.setVertexPointer(&m_pVertex[0].x, m_nVertexCount);
                         m_meshRender.setNormalPointer(&m_pVertexNorm[0].x);
                         m_meshRender.setElementPointer(m_pPolygon, m_nPolygonCount, m_nPlyVertexCount);
